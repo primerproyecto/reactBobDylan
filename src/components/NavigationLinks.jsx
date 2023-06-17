@@ -7,42 +7,34 @@ import {
   Menu,
   Segment,
   Icon,
+  Input,
 } from "semantic-ui-react";
+import { NavLink } from "react-router-dom";
 
 export const NavigationLinks = () => {
   return (
     <div>
       <Menu fixed="top" inverted size="huge">
         <Container>
-          <Menu.Item as="a" header link={true} href="/">
-            <Icon disabled name="eye" size="huge" /> bobDylan
+          <Menu.Item as="div" header>
+            <NavLink to="/">Inicio</NavLink>
           </Menu.Item>
-          <Menu.Item as="a" link={true} href="/canciones" active>
-            Canciones
+          <Menu.Item as="div">
+            <NavLink to="/canciones">Canciones</NavLink>
           </Menu.Item>
-          <Menu.Item as="a" link={true} href="/cancion">
-            Cancion
+          <Menu.Item as="div">
+            {/* <NavLink
+              to="https://goddylan.com/"
+            >
+              God Dylan
+            </NavLink> */}
           </Menu.Item>
 
-          <Dropdown item simple text="Otros enlaces del dylan">
+          {/* <Dropdown item simple text="Otros enlaces del dylan">
             <Dropdown.Menu>
-              <Dropdown.Item href="https://goddylan.com/">
-                god dylan
-              </Dropdown.Item>
-              <Dropdown.Item>List Item</Dropdown.Item>
-              <Dropdown.Divider />
-              <Dropdown.Header>Header Item</Dropdown.Header>
-              <Dropdown.Item>
-                <i className="dropdown icon" />
-                <span className="text">Submenu</span>
-                <Dropdown.Menu>
-                  <Dropdown.Item>List Item</Dropdown.Item>
-                  <Dropdown.Item>List Item</Dropdown.Item>
-                </Dropdown.Menu>
-              </Dropdown.Item>
-              <Dropdown.Item>List Item</Dropdown.Item>
+              <NavLink to="https://goddylan.com/">god dylan</NavLink>
             </Dropdown.Menu>
-          </Dropdown>
+          </Dropdown> */}
         </Container>
       </Menu>
     </div>

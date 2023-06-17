@@ -1,21 +1,42 @@
 import React from "react";
-import { CheckWidth } from "../hooks/CheckWidth";
-import { Container } from "semantic-ui-react";
 import { useParams } from "react-router-dom";
+import useSWR from "swr";
+import { fetcher } from "../util/index";
+import JSONPretty from "react-json-pretty";
+import {
+  Container,
+  Divider,
+  Dropdown,
+  Grid,
+  Header,
+  Image,
+  List,
+  Menu,
+  Segment,
+} from "semantic-ui-react";
 
-export const Cancion = ({ props }) => {
-  const viewportWidth = CheckWidth();
+export const Cancion = () => {
   const { id } = useParams();
+  const { data, error, isLoading } = useSWR(
+    `https://loremdylan-production.up.railway.app/api/v1/all/${id}`,
+    fetcher
+  );
+  if (error) return <div>failed to load</div>;
+  if (isLoading) return <div>loading...</div>;
   return (
     <Container text style={{ marginTop: "7em" }}>
-      <br></br>
-      <br></br>
-      <br></br>
-      <h1>
-        fdfdf ss fs asfasdfasdfsad fsadf sdf sdaf ds failedsdf sda failedsdfds
-        failedsdfsad fsadff asfasdfasdfsad {id}
-      </h1>
-      {viewportWidth}
+      <h1>{data && data[0].song}</h1>
+      <figure>
+        <img src={data[0].cover} />
+      </figure>
+      {data && (
+        <JSONPretty
+          id="json-pretty"
+          style={{ fontSize: "1.1em" }}
+          data={data[0].lyrics}
+          space="14"
+        />
+      )}
     </Container>
   );
 };
