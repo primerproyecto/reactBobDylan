@@ -23,6 +23,10 @@ export const NavigationLinks = () => {
             <NavLink to="/canciones">Canciones</NavLink>
           </Menu.Item>
           <Menu.Item as="div">
+            <Menu.Item as="div">
+              <NavLink to="/discografia">Discografia</NavLink>
+            </Menu.Item>
+            <Menu.Item as="div"></Menu.Item>
             {/* <NavLink
               to="https://goddylan.com/"
             >
