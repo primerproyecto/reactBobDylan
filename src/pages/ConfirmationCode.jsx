@@ -52,9 +52,12 @@ const ConfirmationCode = () => {
             onChange={(e) => setConfirmationCode(e.target.value)}
           />
         </div>
+        <div className="field">
+          <button>Volver a mandar código</button>
+        </div>
 
         <div className="field">
-          <button>Confirmar</button>
+          <button type="submit">Confirmar</button>
         </div>
       </form>
     </Container>
