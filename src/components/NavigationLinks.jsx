@@ -1,14 +1,4 @@
-import {
-  Container,
-  Divider,
-  Dropdown,
-  Image,
-  List,
-  Menu,
-  Segment,
-  Icon,
-  Input,
-} from "semantic-ui-react";
+import { Container, Menu } from "semantic-ui-react";
 import { NavLink } from "react-router-dom";
 
 export const NavigationLinks = () => {
@@ -26,19 +16,16 @@ export const NavigationLinks = () => {
             <Menu.Item as="div">
               <NavLink to="/discografia">Discografia</NavLink>
             </Menu.Item>
-            <Menu.Item as="div"></Menu.Item>
-            {/* <NavLink
-              to="https://goddylan.com/"
-            >
-              God Dylan
-            </NavLink> */}
+            <Menu.Item as="div">
+              <NavLink to="/users/register">Register</NavLink>
+            </Menu.Item>
+            <Menu.Item as="div">
+              <NavLink to="/users/login">Login</NavLink>
+            </Menu.Item>
+            <Menu.Item as="div">
+              <NavLink to="/confirmationcode">ConfirmationCode</NavLink>
+            </Menu.Item>
           </Menu.Item>
-
-          {/* <Dropdown item simple text="Otros enlaces del dylan">
-            <Dropdown.Menu>
-              <NavLink to="https://goddylan.com/">god dylan</NavLink>
-            </Dropdown.Menu>
-          </Dropdown> */}
         </Container>
       </Menu>
     </div>

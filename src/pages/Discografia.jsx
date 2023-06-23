@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import { useContext } from "react";
 import { DylanContext } from "../context/dataContext";
 import { Container } from "semantic-ui-react";
 
