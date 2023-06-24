@@ -2,6 +2,8 @@ import { Container, Menu } from "semantic-ui-react";
 import { NavLink } from "react-router-dom";
 
 export const NavigationLinks = () => {
+  const isLogIn = localStorage.getItem("token") ? true : false;
+
   return (
     <div>
       <Menu fixed="top" inverted size="huge">
@@ -19,9 +21,15 @@ export const NavigationLinks = () => {
             <Menu.Item as="div">
               <NavLink to="/users/register">Register</NavLink>
             </Menu.Item>
-            <Menu.Item as="div">
-              <NavLink to="/users/login">Login</NavLink>
-            </Menu.Item>
+            {isLogIn ? (
+              <Menu.Item as="div">
+                <NavLink to="/users/login">Logout</NavLink>
+              </Menu.Item>
+            ) : (
+              <Menu.Item as="div">
+                <NavLink to="/users/login">Login</NavLink>
+              </Menu.Item>
+            )}
             <Menu.Item as="div">
               <NavLink to="/confirmationcode">ConfirmationCode</NavLink>
             </Menu.Item>

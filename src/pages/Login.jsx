@@ -21,6 +21,9 @@ const Login = () => {
   };
   useEffect(() => {
     console.log(res);
+    if (res.data) {
+      localStorage.setItem("token", res.data.token);
+    }
   }, [res]);
 
   useEffect(() => {

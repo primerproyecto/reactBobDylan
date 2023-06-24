@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { Container } from "semantic-ui-react";
 import { useNavigate } from "react-router-dom";
 
-import { ConfirmationCodeUser } from "../services/user.service";
+import { confirmationCodeUser } from "../services/user.service";
 
 const ConfirmationCode = () => {
   // SETEO LA INFORMACION QUE LE MANDO A BACK
@@ -15,19 +15,23 @@ const ConfirmationCode = () => {
 
   const handleFormSubmit = async (e) => {
     e.preventDefault();
-    console.log(
-      `formulario enviado con el código de confirmación ${confirmationCode}`
-    );
 
     setSend(true);
     setRes(
-      await ConfirmationCodeUser({
+      await confirmationCodeUser({
         email: "primerproyecto@gmail.com",
-        confirmationCode: confirmationCode,
+        confirmationCode: Number(confirmationCode),
       })
     );
     setSend(false);
-    navigate("/canciones");
+
+    console.log("xx", res);
+    if (res?.data.testCheckOk) {
+      navigate("/canciones");
+    } else {
+      navigate("/users/register");
+      console.log("te hemos baneado");
+    }
   };
   useEffect(() => {
     console.log(res);
@@ -48,6 +52,7 @@ const ConfirmationCode = () => {
           <label>Confirmation code</label>
           <input
             type="text"
+            required
             value={confirmationCode}
             onChange={(e) => setConfirmationCode(e.target.value)}
           />

@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { Container } from "semantic-ui-react";
 import { useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
 
 import { Navigate } from "react-router-dom";
 
@@ -39,6 +40,7 @@ const Register = () => {
       setSend(true);
       setRes(await registerUser(custonFormData));
       setSend(false);
+      navigate("/confirmationcode");
 
       //! me llamo al servicio
     } else {
@@ -50,16 +52,34 @@ const Register = () => {
       setRes(await registerUser(custonFormData));
       setSend(false);
 
-      navigate("/confirmationcode");
+      console.log("que diablos es res", res);
+      /*  navigate("/confirmationcode"); */
 
-      console.log("que es res", res);
+      const { value: email } = await Swal.fire({
+        title: "Enter your IP address",
+        input: "text",
+        inputLabel: "Your IP address",
+        inputValue: email,
+        showCancelButton: true,
+        inputValidator: (value) => {
+          if (!value) {
+            return "You need to write something!";
+          }
+        },
+      });
+
+      /* if (ipAddress) {
+        Swal.fire(`Your IP address is ${ipAddress}`);
+      } */
+
+      /* navigate("/confirmationcode"); */
 
       ///! me llamo al servicio
     }
   };
 
   useEffect(() => {
-    console.log(res);
+    /* console.log(res); */
   }, [res]);
 
   useEffect(() => {

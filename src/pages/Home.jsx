@@ -2,12 +2,14 @@ import React from "react";
 import { Container } from "semantic-ui-react";
 import { fetcher } from "../util/index";
 import useSWR from "swr";
+import Swal from "sweetalert2";
 
 export const Home = () => {
   const { data, error, isLoading } = useSWR(
     "https://loremdylan-production.up.railway.app/api/v1/sentence",
     fetcher
   );
+
   if (error)
     return (
       <Container text style={{ marginTop: "7em" }}>
